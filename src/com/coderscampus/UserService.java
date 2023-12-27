@@ -1,9 +1,12 @@
 package com.coderscampus;
 
-public class UserService {
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
-	//First, I want to read from the text file and import the users into an array to
-	//be used for validating our user input
+public class UserService{
 	
+	//creating a class to read the file and then store the file into an array of users
+	//
 	
 }
