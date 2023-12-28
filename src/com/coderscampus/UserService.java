@@ -4,9 +4,34 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class UserService{
+public class UserService {
 	
-	//creating a class to read the file and then store the file into an array of users
-	//
+	public User[] getUsers(String fileName) throws IOException {
+		//reading the file
+		BufferedReader reader = new BufferedReader(new FileReader("data.txt"));
+		
+		//counting the number of lines in file
+		String line;
+		int count = 0;
+		while (reader.readLine() != null) {
+			count++;
+		}
+		reader.close();
+		
+		//adding read lines to an array of users
+		User[] users = new User[count];
+		reader = new BufferedReader(new FileReader(fileName));
+		
+		int index = 0;
+		
+		while ((line = reader.readLine()) != null) {
+			String[] data = line.split(",");
+			users[index++] = new User(data[0], data[1], data[2]);
+		}
+		reader.close();
+		
+		return users;
+		
+	}
 	
 }

@@ -1,32 +1,26 @@
 package com.coderscampus;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
 public class UserLoginApplication {
 
-	public static void main(String[] args) throws IOException {
-
-		// Reading the data.txt file using a while loop to return all 4 entries.
-		BufferedReader fileReader = null;
-		try {
-			fileReader = new BufferedReader(new FileReader("data.txt"));
-
-			String line;
-			while ((line = fileReader.readLine()) != null) {
-				System.out.println(line);
-			}
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} finally {
-			fileReader.close();
-		}
-		// End of file reading code
+	public static void main(String[] args) {
 		
-		
+		UserService userService = new UserService();
+		User[] users;
+        try {
+            users = userService.getUsers("data.txt");
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+            return;
+        }
+
+        // Printing the returned users
+        System.out.println("List of Users:");
+        for (User user : users) {
+            System.out.println(user.getUsername() + " " + user.getPassword() + " " + user.getName());
+        }
+
 	}
 
 }
