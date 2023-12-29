@@ -8,7 +8,6 @@ public class UserLoginApplication {
 	public static void main(String[] args) {
 
 		// create an instance of UserService to allow use of its methods
-
 		UserService userService = new UserService();
 
 		// this will read the file and assign created users to a users array, or it
