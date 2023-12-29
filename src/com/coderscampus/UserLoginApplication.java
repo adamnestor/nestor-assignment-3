@@ -11,21 +11,15 @@ public class UserLoginApplication {
 
 		UserService userService = new UserService();
 
-		// declares an array of users that belong to the User class
-		User[] users;
-
-		// this will read the file and assign created users to the users array, or it
+		// this will read the file and assign created users to a users array, or it
 		// will tell us if an exception occurred
+		User[] users;
 		try {
 			users = userService.getUsers("data.txt");
 		} catch (IOException e) {
 			System.out.println("IOException: " + e.getMessage());
 			return;
 		}
-
-		// allow user to input a username and password
-		// validate the inputed username and password by checking if they are equal to
-		// existing user data
 
 		// set the number of attempts to 5
 		int maxAttempts = 5;
@@ -51,8 +45,8 @@ public class UserLoginApplication {
 				attempts++;
 				System.out.println("Invalid login, please try again.");
 			}
-
 		}
+
 		System.out.println("Too many failed login attempts, you are now locked out.");
 
 	}

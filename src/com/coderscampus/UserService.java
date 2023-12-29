@@ -6,7 +6,6 @@ import java.io.IOException;
 
 public class UserService {
 
-	// getUsers method reads the file and adds the lines into an array of users
 	public User[] getUsers(String fileName) throws IOException {
 		// reading the file
 		BufferedReader reader = new BufferedReader(new FileReader(fileName));
