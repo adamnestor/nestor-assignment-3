@@ -20,13 +20,11 @@ public class UserLoginApplication {
 			return;
 		}
 
-		// set the number of attempts to 5
+		// set the number of attempts to 5 and open a scanner to allow for those
+		// attempts
 		int maxAttempts = 5;
-
-		// create a scanner to allow for the input
 		Scanner keyboard = new Scanner(System.in);
 
-		// allow user to enter their data
 		int attempts = 0;
 		while (attempts < maxAttempts) {
 			System.out.println("Enter username: ");
@@ -34,11 +32,11 @@ public class UserLoginApplication {
 			System.out.println("Enter password: ");
 			String inputPassword = keyboard.nextLine();
 
-			// uses the method validateUser from userService class in order to compare the
-			// input and the stored data
+			// uses the method validateUser from userService class
 			User confirmUser = userService.validateUser(users, inputUsername, inputPassword);
 			if (confirmUser != null) {
 				System.out.println("Welcome " + confirmUser.getName());
+				keyboard.close();
 				return;
 			} else {
 				attempts++;
@@ -47,7 +45,7 @@ public class UserLoginApplication {
 		}
 
 		System.out.println("Too many failed login attempts, you are now locked out.");
-
+		keyboard.close();
 	}
 
 }

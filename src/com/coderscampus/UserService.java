@@ -7,7 +7,7 @@ import java.io.IOException;
 public class UserService {
 
 	public User[] getUsers(String fileName) throws IOException {
-		// reading the file
+
 		BufferedReader reader = new BufferedReader(new FileReader(fileName));
 
 		// counting the number of lines in file
